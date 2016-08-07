@@ -1,0 +1,53 @@
+﻿//Project:       Calories counter
+//Date:          <date>
+//Description:   Calculate and display the number of calories.
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+   const int FAT_CALS = 9;
+   const int OTHER_CALS = 4;
+ 
+   protected void calculateButton_Click(object sender, EventArgs e)
+   {
+        //Calculate the number of calories for the current item.
+       int fatInteger, proteinInteger, carbsInteger, 
+            fatCalsInteger, proCalsInteger, carbCalsInteger,
+            itemCalsInteger;
+
+        //Convert the input values
+        fatInteger =int.Parse(fatTextBox.Text);
+        carbsInteger = int.Parse(carbsTextBox.Text);
+        proteinInteger = int.Parse(proteinTextBox.Text);
+
+        //Perform calculations
+        fatCalsInteger = fatInteger * FAT_CALS;
+        carbCalsInteger = carbsInteger * 4;
+        proCalsInteger = proteinInteger * 4;
+
+        itemCalsInteger = fatCalsInteger + carbCalsInteger + proCalsInteger;
+       
+        //Display the results
+        currentLabel.Text = itemCalsInteger.ToString();
+      
+   }
+   
+  protected void clearButton_Click(object sender, EventArgs e)
+   {
+       //Clear the form
+       carbsTextBox.Text = "";
+       proteinTextBox.Text = "";
+       currentLabel.Text = "";
+       fatTextBox.Text = "";
+       fatTextBox.Focus();   
+       
+   }
+ 
+}
